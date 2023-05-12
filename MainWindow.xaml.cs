@@ -64,23 +64,12 @@ namespace lawerna_weather
                     result += "city: " + contributors.name + " \r";
                     result += "temperature: " + contributors.main.temp + @" C" + " \r";
                     result += "description: " + contributors.weather[0].description + "\r";
-                    result += "wind: " + windSpeed + "\r";
+                    result += "wind: " + windSpeed + @" m/s" + "\r";
                 }
             }
             return result;
         }
-
-        public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
-        {
-            // Unix timestamp is seconds past epoch
-            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            dateTime = dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-            return dateTime;
-        }
-
-
     }
-
 
     internal class Product
     {
@@ -94,7 +83,6 @@ namespace lawerna_weather
         public Weather[] weather { get; set; }
         [JsonProperty("wind")]
         public Wind wind { get; set; }
-
     }
 
     internal class MainObj
@@ -105,14 +93,12 @@ namespace lawerna_weather
         public string feel_like { get; set; }
         [JsonProperty("humidity")]
         public string humidity { get; set; }
-
     }
 
     internal class Weather
     {
         [JsonProperty("description")]
         public string description { get; set; }
-
     }
 
     internal class Wind

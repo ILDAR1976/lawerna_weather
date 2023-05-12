@@ -1,0 +1,19 @@
+﻿<Window x:Class="lawerna_weather.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lawerna_weather"
+        mc:Ignorable="d"
+        Title="Weather data requests" Height="370.764" Width="245.348" MinWidth="245.348" MinHeight="370.764" ResizeMode="NoResize">
+    <Grid MinWidth="222" MinHeight="340" Width="222" Height="340">
+        <Label Content="City" HorizontalAlignment="Left" Margin="16,12,0,0" VerticalAlignment="Top"/>
+        <Label Content="Weather data" HorizontalAlignment="Left" Margin="16,53,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="City" HorizontalAlignment="Left" Height="23" Margin="64,17,0,0" TextWrapping="Wrap" Text="kazan" VerticalAlignment="Top" Width="147"/>
+        <RichTextBox x:Name="Result" HorizontalAlignment="Left" Height="202" Margin="16,84,0,0" VerticalAlignment="Top" Width="195">
+            <FlowDocument/>
+        </RichTextBox>
+        <Button x:Name="Request_button" Content="Request" HorizontalAlignment="Left" Margin="135,301,0,0" VerticalAlignment="Top" Width="75" Click="Request_button_Click"/>
+
+    </Grid>
+</Window>

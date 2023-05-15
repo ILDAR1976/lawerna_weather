@@ -1,0 +1,93 @@
+CREATE DATABASE LAWERNA
+COLLATE Cyrillic_General_100_CI_AI;
+GO
+
+USE LAWERNA;
+GO
+
+CREATE TABLE [dbo].[product] 
+( 
+  id int IDENTITY (1,1) NOT NULL,
+  name nvarchar(100),
+  cost int,
+  volume int
+  CONSTRAINT pk_pr PRIMARY KEY NONCLUSTERED (id)
+);
+GO
+
+CREATE TABLE [dbo].[manager] 
+( 
+  id int IDENTITY (1,1) NOT NULL,
+  fio nvarchar(100),
+  salary int,
+  age int,
+  phone nvarchar(20),
+  CONSTRAINT pk_m PRIMARY KEY NONCLUSTERED (id)
+);
+GO
+
+CREATE TABLE [dbo].[sale] 
+( 
+  id int IDENTITY (1,1) NOT NULL,
+  id_manager int ,
+  id_prod int,
+  count_ int,
+  sum_ int,
+  date date
+  CONSTRAINT pk_s PRIMARY KEY NONCLUSTERED (id)
+);
+GO
+
+insert into dbo.manager (fio,salary,age,phone)
+values ('Ivanov A.A.',150000,35,'8-555-888-88-88');
+insert into dbo.manager (fio,salary,age,phone)
+values ('Petrov A.S.',152000,31,'8-555-888-88-81')
+insert into dbo.manager (fio,salary,age,phone)
+values ('Sidorov A.G.',158100,34,'8-555-888-88-80')
+insert into dbo.manager (fio,salary,age,phone)
+values ('Mokahrov B.G.',153000,38,'')
+
+
+
+insert into dbo.product(name,cost,volume)
+values ('Фанера',1800,200);
+insert into dbo.product(name,cost,volume)
+values ('ЛДСП',1740,100);
+insert into dbo.product(name,cost,volume)
+values ('ОСБ',10000,20);
+insert into dbo.product(name,cost,volume)
+values ('Шпон',100,2020);
+insert into dbo.product(name,cost,volume)
+values ('Шпон',200,120);
+
+
+
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (1,1,10,18000,'20210620');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (1,2,10,17400,'20210620');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (3,1,10,18000,'20210620');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (4,4,130,390,'20210620');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (4,3,1,10000,'20210620');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (4,3,1,10000,'20210620');
+
+
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (2,3,1,10000,'20210822');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (1,3,1,10000,'20210822');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (1,1,10,18000,'20210822');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (1,3,1,10000,'20210822');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (1,3,1,10000,'20210822');
+insert into dbo.sale(id_manager,id_prod,count_,sum_,date)
+values (1,3,1,10000,'20210822');
+
+
+

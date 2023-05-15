@@ -1,0 +1,66 @@
+use LAWERNA;
+go
+
+--1
+select fio from dbo.manager where len(phone) > 0
+
+--2
+select pr.name, sum(count_) 
+from dbo.sale s
+left join dbo.product pr on s.id_prod = pr.id
+where 
+ date = '20210620'
+group by pr.name, s.id_prod
+
+--3
+select pr.name, avg(sum_) 
+from dbo.sale s
+left join dbo.product pr on s.id_prod = pr.id
+where 
+ s.id_prod = 1
+group by pr.name, s.id_prod
+
+--4
+select m.fio, SUM(s.sum_) as total_sales
+ from [LAWERNA].[dbo].manager m
+ join sale s ON m.id = s.id_manager
+ join product p ON s.id_prod = p.id
+ where p.name = 'ОСБ'
+ group by m.fio;
+
+--5 
+select m.fio, pr.name
+from dbo.sale s
+left join dbo.product pr on s.id_prod = pr.id
+left join dbo.manager m on s.id_manager = m.id
+where s.date = '20210822'
+group by m.fio, pr.name, s.id_manager
+
+--6
+select name,cost
+from dbo.product
+where cost > 1750 and name like '%Фанера%'
+
+
+--7 
+select YEAR(date) AS year,  MONTH(date) AS month, name, SUM(count_) AS total_count,
+    SUM(sum_) AS total_sum from sale
+    inner join product ON sale.id_prod = product.id
+    group by
+     YEAR(date),
+     MONTH(date),
+     name
+    order by
+     YEAR(date),
+     MONTH(date),
+     name;
+
+--8 
+select name, COUNT(*) as count
+   from [LAWERNA].[dbo].[product]
+   group by name
+   having count(*) > 1;
+
+
+
+
